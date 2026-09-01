@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+from pathlib import Path
 from predictor import predict_dataset
 from datetime import datetime
 
@@ -112,17 +113,14 @@ st.divider()
 # LOAD MODELS
 # ==================================================
 
-MODEL_PATH = (
-    r"C:\GITHUB\NIDS\models\binary_model.pkl"
-)
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_DIR = BASE_DIR / "models"
 
-MULTI_MODEL_PATH = (
-    r"C:\GITHUB\NIDS\models\multiclass_model.pkl"
-)
+MODEL_PATH = MODEL_DIR / "binary_model.pkl"
 
-ENCODER_PATH = (
-    r"C:\GITHUB\NIDS\models\encoders.pkl"
-)
+MULTI_MODEL_PATH = MODEL_DIR / "multiclass_model.pkl"
+
+ENCODER_PATH = MODEL_DIR / "encoders.pkl"
 
 
 models_loaded = False

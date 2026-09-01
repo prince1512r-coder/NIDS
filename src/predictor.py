@@ -1,22 +1,30 @@
 import joblib
 import pandas as pd
+from pathlib import Path
 
 print("===== NEW predictor.py LOADED =====")
+
+# -----------------------------
+# Project Paths
+# -----------------------------
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_DIR = BASE_DIR / "models"
 
 # -----------------------------
 # Load Saved Models
 # -----------------------------
 
 binary_model = joblib.load(
-    r"C:\GITHUB\NIDS\models\binary_model.pkl"
+    MODEL_DIR / "binary_model.pkl"
 )
 
 multiclass_model = joblib.load(
-    r"C:\GITHUB\NIDS\models\multiclass_model.pkl"
+    MODEL_DIR / "multiclass_model.pkl"
 )
 
 encoders = joblib.load(
-    r"C:\GITHUB\NIDS\models\encoders.pkl"
+    MODEL_DIR / "encoders.pkl"
 )
 
 # -----------------------------
